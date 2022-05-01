@@ -90,7 +90,7 @@ userSchema.methods.generateJsonWebToken = async function () {
   // console.log(user, user._id.toString());
   const token = jwt.sign(
     { _id: user._id.toString() },
-    "harishkumar(securityKey)"
+    process.env.SECURITY_KEY
   );
   user.tokens = user.tokens.concat({ token });
   await user.save();
